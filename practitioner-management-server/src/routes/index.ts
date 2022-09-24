@@ -1,5 +1,6 @@
-import { NextFunction, Request, Response, Router } from "express";
+import practitionerRoutes from "./practitionerRoutes";
 import * as userController from "../controllers/userController";
+import { NextFunction, Request, Response, Router } from "express";
 import * as tokenController from "../controllers/tokenController";
 
 // import auth from "../middlewares/auth";
@@ -20,5 +21,7 @@ router.post("/register", userController.createUser);
 // router.use(auth);
 
 router.use("/users", userRoutes);
+
+router.use("/practitioner", practitionerRoutes);
 
 export default router;
