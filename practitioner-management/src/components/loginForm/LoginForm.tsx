@@ -34,7 +34,7 @@ export const LoginForm = ({
         );
         dispatch(setIsUserLoggedIn(true));
         dispatch(setId(data.user.id));
-        navigate("/contacts");
+        navigate("/practitioner");
       }
     } catch (error) {
       console.log(error);

@@ -12,6 +12,8 @@ import "./App.css";
 import { RootState } from "./redux/store";
 import Register from "./pages/register/Register";
 import { setId, setIsUserLoggedIn } from "./reducers";
+import AuthRoute from "./hoc/AuthRoute";
+import PractitionerCreate from "./pages/practtioner/PractitionerCreate";
 
 function App() {
   axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
@@ -27,6 +29,9 @@ function App() {
   return (
     <BrowserRouter basename="/">
       <Routes>
+        <Route path="/practitioner" element={<AuthRoute />}>
+          <Route path="/practitioner/add" element={<PractitionerCreate />} />
+        </Route>
         <Route
           path="/login"
           element={isLoggedIn ? <Navigate to="/" /> : <Login />}

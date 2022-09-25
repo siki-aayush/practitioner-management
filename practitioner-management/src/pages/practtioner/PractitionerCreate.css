@@ -1,0 +1,12 @@
+.practitioner-create {
+  flex-direction: column;
+  height: 100vh;
+}
+
+.practitioner-create .practitioner-create__title {
+  margin-bottom: 40px;
+}
+
+.practitioner-create label {
+  margin-right: 14px !important;
+}
