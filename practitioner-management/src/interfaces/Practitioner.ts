@@ -1,4 +1,4 @@
-const enum day {
+export const enum day {
   sunday = "Sunday",
   monday = "Monday",
   tuesday = "Tuesday",

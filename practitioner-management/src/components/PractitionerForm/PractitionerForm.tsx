@@ -16,6 +16,7 @@ import {
 } from "antd";
 
 import { Practitioner } from "../../interfaces";
+import { WEEK_DAYS } from "../../constants/common";
 import "./PractitionerForm.css";
 
 interface PractitionerFormInterface {
@@ -61,8 +62,8 @@ const PractitionerForm = (props: PractitionerFormInterface) => {
     formData.append("dob", values.dob.format("YYYY-MM-DD"));
     formData.append("photograph", values.photograph[0].originFileObj);
     formData.append("working_days", values.workingDays.join(","));
-    formData.append("start_time", values.workingTime[0].format("hh:mm"));
-    formData.append("end_time", values.workingTime[1].format("hh:mm"));
+    formData.append("start_time", values.workingTime[0].format("HH:mm"));
+    formData.append("end_time", values.workingTime[1].format("HH:mm"));
 
     if (props.update) {
       formData.append("id", props.id as string);
@@ -149,15 +150,7 @@ const PractitionerForm = (props: PractitionerFormInterface) => {
               console.log("changed", value);
             }}
           >
-            {[
-              "Sunday",
-              "Monday",
-              "Tuesday",
-              "Wednesday",
-              "Thursday",
-              "Friday",
-              "Saturday",
-            ].map((day) => (
+            {WEEK_DAYS.map((day) => (
               <Option key={day}>{day.slice(0, 3)}</Option>
             ))}
           </Select>
