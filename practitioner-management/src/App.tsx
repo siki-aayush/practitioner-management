@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from "react-redux";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import {
   getUserIdFromLocalStorage,
@@ -7,7 +7,6 @@ import {
 } from "./utils/localstorage.util";
 
 import AuthRoute from "./hoc/AuthRoute";
-import { RootState } from "./redux/store";
 import { setId, setIsUserLoggedIn } from "./reducers";
 
 import { Login } from "./pages/login/Login";
@@ -16,8 +15,16 @@ import PractitionerList from "./pages/practtioner/PractitionerList";
 import PractitionerCreate from "./pages/practtioner/PractitionerCreate";
 import PractitionerUpdate from "./pages/practtioner/PractitionerUpdate";
 
-import "./App.css";
 import { jwtInterceptorProvider } from "./axios/jwt.interceptor";
+import {
+  LOGIN,
+  PRACTITIONER,
+  PRACTITIONER_CREATE,
+  PRACTITIONER_UPDATE,
+  REGISTER,
+} from "./constants";
+
+import "./App.css";
 
 function App() {
   jwtInterceptorProvider();
@@ -26,25 +33,19 @@ function App() {
   dispatch(setIsUserLoggedIn(getUserLoginFromLocalStorage()));
   dispatch(setId(getUserIdFromLocalStorage()));
 
-  const isLoggedIn = useSelector(
-    (state: RootState) => state.auth.isUserLoggedIn
-  );
   return (
     <BrowserRouter basename="/">
       <Routes>
-        <Route path="/practitioner" element={<AuthRoute />}>
-          <Route path="/practitioner" element={<PractitionerList />} />
-          <Route path="/practitioner/add" element={<PractitionerCreate />} />
+        <Route path={PRACTITIONER} element={<AuthRoute />}>
+          <Route path={PRACTITIONER} element={<PractitionerList />} />
+          <Route path={PRACTITIONER_CREATE} element={<PractitionerCreate />} />
           <Route
-            path="/practitioner/update/:id"
+            path={`${PRACTITIONER_UPDATE}/:id`}
             element={<PractitionerUpdate />}
           />
         </Route>
-        <Route
-          path="/login"
-          element={isLoggedIn ? <Navigate to="/practitioner" /> : <Login />}
-        />
-        <Route path="/register" element={<Register />} />
+        <Route path={LOGIN} element={<Login />} />
+        <Route path={REGISTER} element={<Register />} />
         <Route path="*" element={<h1> Page not found </h1>} />
       </Routes>
     </BrowserRouter>

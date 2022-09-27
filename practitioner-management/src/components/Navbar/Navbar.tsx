@@ -1,16 +1,18 @@
+import { Menu } from "antd";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { clearUserLoginFromLocalStorage } from "../../utils/localstorage.util";
 import {
   UserOutlined,
   LoginOutlined,
   MenuOutlined,
   UserAddOutlined,
 } from "@ant-design/icons";
-import { Menu } from "antd";
-import { Link, useNavigate } from "react-router-dom";
-import { clearUserLoginFromLocalStorage } from "../../utils/localstorage.util";
-import { useDispatch } from "react-redux";
+
+import { setIsUserLoggedIn } from "../../reducers";
+import { LOGIN, PRACTITIONER, PRACTITIONER_CREATE } from "../../constants";
 
 import "./Navbar.css";
-import { setIsUserLoggedIn } from "../../reducers";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -24,14 +26,14 @@ const Navbar = () => {
       className="navbar"
     >
       <Menu.Item key="add-practitioner" icon={<UserAddOutlined />}>
-        <Link to="/practitioner/add"> Add Practitioner </Link>
+        <Link to={PRACTITIONER_CREATE}> Add Practitioner </Link>
       </Menu.Item>
       <Menu.Item
         key="practitioners"
         icon={<UserOutlined />}
-        className="testingChild"
+        className="practitionerChild"
       >
-        <Link to="/practitioner"> Practitioner </Link>
+        <Link to={PRACTITIONER}> Practitioner </Link>
       </Menu.Item>
       <Menu.Item
         key="login"
@@ -42,7 +44,7 @@ const Navbar = () => {
           onClick={() => {
             clearUserLoginFromLocalStorage();
             dispatch(setIsUserLoggedIn(false));
-            navigate("/login");
+            navigate(LOGIN);
           }}
         >
           Logout

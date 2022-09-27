@@ -16,7 +16,7 @@ import {
 } from "antd";
 
 import { Practitioner } from "../../interfaces";
-import { WEEK_DAYS } from "../../constants/common";
+import { WEEK_DAYS } from "../../constants";
 import "./PractitionerForm.css";
 
 interface PractitionerFormInterface {
