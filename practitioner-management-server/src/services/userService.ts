@@ -1,10 +1,13 @@
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+
 import Succes from "../domain/Success";
 import { Token } from "../domain/Token";
 import { User, UserToCreate, UserToGet } from "../domain/User";
+
 import logger from "../misc/logger";
 import UserModel from "../models/UserModel";
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
+import { ACCESS_TOKEN_EXPIRE_TIME } from "../constants/common";
 
 /**
  * Gets all the users
@@ -134,7 +137,7 @@ export const loginUser = async (
   // If the password matches then a new JWT token is created and send as response
   if (isCorrect) {
     const accessToken = jwt.sign(user, process.env.JWT_SECRET as string, {
-      expiresIn: "1h",
+      expiresIn: ACCESS_TOKEN_EXPIRE_TIME,
     });
     const refreshToken = jwt.sign(
       user,

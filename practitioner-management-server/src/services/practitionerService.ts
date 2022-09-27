@@ -1,8 +1,8 @@
 import fs from "fs";
 import logger from "../misc/logger";
 import Succes from "../domain/Success";
-import { v2 as cloudinary } from "cloudinary";
 import PractitionerModel from "../models/PractitionerModel";
+import { v2 as cloudinary } from "cloudinary"; // This should always come after the practitioner model in imported otherwise the cloudinary config won't get setup for some reason
 import {
   Practitioner,
   PractitionerBeforeUpload,
@@ -100,7 +100,7 @@ export const createPractitioner = async (
       crop: "limit",
     });
 
-    // Create a new contact on the database
+    // Create a new practitioner on the database
     const newPractitioner = await PractitionerModel.createPractitioner({
       ...practitioner,
       photograph: result.url,

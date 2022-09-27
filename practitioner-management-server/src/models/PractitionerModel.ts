@@ -36,9 +36,11 @@ class PractitionerModel {
    * @param  {string} name
    */
   public static async getPractitionerByName(name: string) {
-    const contact = await db(PractitionerModel.table).where({ name }).first();
+    const practitioner = await db(PractitionerModel.table)
+      .where({ name })
+      .first();
 
-    return contact;
+    return practitioner;
   }
 
   /**

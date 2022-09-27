@@ -1,0 +1,12 @@
+.practitioner-update {
+  flex-direction: column;
+  height: 100vh;
+}
+
+.practitioner-update .practitioner-update__title {
+  margin-bottom: 40px;
+}
+
+.practitioner-update label {
+  margin-right: 14px !important;
+}
