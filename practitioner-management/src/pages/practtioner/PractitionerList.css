@@ -1,0 +1,12 @@
+.practitioner {
+  padding: 5px 50px !important;
+}
+
+.practitioner__workTime--time {
+  font-weight: var(--semi-bold);
+}
+
+.practitioner__workTime--label {
+  width: 75px;
+  display: inline-block;
+}

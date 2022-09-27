@@ -4,6 +4,7 @@ import Succes from "../domain/Success";
 import { Token } from "../domain/Token";
 
 import UserModel from "../models/UserModel";
+import { ACCESS_TOKEN_EXPIRE_TIME } from "../constants/common";
 
 export const generateToken = async (
   refreshToken: string,
@@ -14,7 +15,7 @@ export const generateToken = async (
   try {
     jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET as string);
     const accessToken = jwt.sign(user, process.env.JWT_SECRET as string, {
-      expiresIn: "1m",
+      expiresIn: ACCESS_TOKEN_EXPIRE_TIME,
     });
     const newRefreshToken = jwt.sign(
       user,

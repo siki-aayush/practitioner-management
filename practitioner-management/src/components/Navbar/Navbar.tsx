@@ -1,5 +1,5 @@
 import {
-  ContactsOutlined,
+  UserOutlined,
   LoginOutlined,
   MenuOutlined,
   UserAddOutlined,
@@ -28,7 +28,7 @@ const Navbar = () => {
       </Menu.Item>
       <Menu.Item
         key="practitioners"
-        icon={<ContactsOutlined />}
+        icon={<UserOutlined />}
         className="testingChild"
       >
         <Link to="/practitioner"> Practitioner </Link>
