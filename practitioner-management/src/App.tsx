@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import {
   getUserIdFromLocalStorage,
@@ -44,6 +44,7 @@ function App() {
             element={<PractitionerUpdate />}
           />
         </Route>
+        <Route path="/" element={<Navigate to={LOGIN} />} />
         <Route path={LOGIN} element={<Login />} />
         <Route path={REGISTER} element={<Register />} />
         <Route path="*" element={<h1> Page not found </h1>} />
