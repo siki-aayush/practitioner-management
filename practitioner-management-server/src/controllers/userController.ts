@@ -1,7 +1,9 @@
-import { NextFunction, Request, Response } from "express";
-import * as userService from "../services/userService";
 import bcrypt from "bcrypt";
+import { StatusCodes } from "http-status-codes";
+import { NextFunction, Request, Response } from "express";
+
 import { SALT_ROUNDS } from "../constants/common";
+import * as userService from "../services/userService";
 
 /**
  * Gets all the users
@@ -116,6 +118,11 @@ export const userLogin = (req: Request, res: Response, next: NextFunction) => {
   const { email, password } = req.body;
   userService
     .loginUser(email, password)
-    .then((data) => res.json(data))
+    .then((data) => {
+      if (!data.data) {
+        res.status(StatusCodes.UNAUTHORIZED);
+      }
+      res.json(data);
+    })
     .catch((err) => next(err));
 };

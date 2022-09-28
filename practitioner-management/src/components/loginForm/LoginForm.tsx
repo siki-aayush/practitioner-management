@@ -39,11 +39,10 @@ export const LoginForm = ({
         dispatch(setId(data.user.id));
         navigate("/practitioner");
       } else {
-        console.log("inside", msg, res.data.message);
         setMsg(res.data.message);
       }
     } catch (error) {
-      console.log(error);
+      setMsg("Incorrent Username or Password");
     }
     setIsLoading(false);
   };
