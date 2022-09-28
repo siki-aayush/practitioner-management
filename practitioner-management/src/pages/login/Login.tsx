@@ -11,6 +11,7 @@ import "./Login.css";
 
 export const Login: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [msg, setMsg] = useState<string>("");
 
   const isLoggedIn = useSelector(
     (state: RootState) => state.auth.isUserLoggedIn
@@ -25,7 +26,7 @@ export const Login: React.FC = () => {
           <h1 className="card__title">
             <span>Practitioner Management</span>
           </h1>
-          <LoginForm setIsLoading={setIsLoading} />
+          <LoginForm setIsLoading={setIsLoading} msg={msg} setMsg={setMsg} />
 
           <div className="card__footer">
             Don't have an account?{" "}

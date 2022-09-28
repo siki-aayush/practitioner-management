@@ -12,10 +12,13 @@ import "./LoginForm.css";
 
 export const LoginForm = ({
   setIsLoading,
+  msg,
+  setMsg,
 }: {
   setIsLoading: Dispatch<SetStateAction<boolean>>;
+  msg: string;
+  setMsg: React.SetStateAction<any>;
 }) => {
-  const [msg] = useState<string>("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -35,6 +38,9 @@ export const LoginForm = ({
         dispatch(setIsUserLoggedIn(true));
         dispatch(setId(data.user.id));
         navigate("/practitioner");
+      } else {
+        console.log("inside", msg, res.data.message);
+        setMsg(res.data.message);
       }
     } catch (error) {
       console.log(error);
