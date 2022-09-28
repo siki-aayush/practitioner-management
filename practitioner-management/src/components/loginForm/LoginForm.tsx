@@ -1,11 +1,12 @@
-import { Button, Form, Input } from "antd";
 import axios from "axios";
-import { Dispatch, SetStateAction, useState } from "react";
 import { useDispatch } from "react-redux";
+import { Button, Form, Input } from "antd";
 import { useNavigate } from "react-router-dom";
-import { loginDetail } from "../../interfaces/loginDetail";
-import { setIsUserLoggedIn } from "../../reducers";
+import { Dispatch, SetStateAction } from "react";
+
 import { setId } from "../../reducers/userSlice";
+import { setIsUserLoggedIn } from "../../reducers";
+import { loginDetail } from "../../interfaces/loginDetail";
 import { addUserLoginToLocalStorage } from "../../utils/localstorage.util";
 
 import "./LoginForm.css";
