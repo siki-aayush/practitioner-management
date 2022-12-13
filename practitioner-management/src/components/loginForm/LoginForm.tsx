@@ -6,7 +6,7 @@ import { Dispatch, SetStateAction } from "react";
 
 import { setId } from "../../reducers/userSlice";
 import { setIsUserLoggedIn } from "../../reducers";
-import { ToastTypes } from "../../enum/toastTypes.enum";
+import { ToastTypes } from "../../enum/toast.enum";
 import { loginDetail } from "../../interfaces/loginDetail";
 import { generateToast } from "../../utils/generateToast.util";
 import { addUserLoginToLocalStorage } from "../../utils/localstorage.util";

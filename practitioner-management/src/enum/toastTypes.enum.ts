@@ -1,1 +1,0 @@
-export enum ToastTypes { success = "success", danger = "danger", info = "info", warning = "warning" };

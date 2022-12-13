@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Toast } from "../../interfaces/Toast";
 import { removeToast } from "../../reducers/toastSlice";
 
-import "./Toast.css";
+import "./ToastNotification.css"
 
 interface ToastProps {
   toastList: any[];

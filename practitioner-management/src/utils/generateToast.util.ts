@@ -1,5 +1,5 @@
 import { AppDispatch } from "../redux/store";
-import { ToastTypes } from "../enum/toastTypes.enum";
+import { ToastTypes } from "../enum/toast.enum";
 import { defaultToastPreferences } from "../constants";
 import { addToast, removeToast } from "../reducers/toastSlice";
 

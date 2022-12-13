@@ -5,7 +5,7 @@ import checkIcon from "../assets/check.svg";
 import errorIcon from "../assets/error.svg";
 import warningIcon from "../assets/warning.svg";
 
-import { ToastTypes } from "../enum/toastTypes.enum";
+import { ToastTypes } from "../enum/toast.enum";
 
 
 export const WEEK_DAYS: day[] = [

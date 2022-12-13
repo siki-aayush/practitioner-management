@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { RootState } from "./redux/store";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
@@ -10,15 +11,15 @@ import {
 import AuthRoute from "./hoc/AuthRoute";
 import { setId, setIsUserLoggedIn } from "./reducers";
 
-import { useSelector } from "react-redux";
 import { Login } from "./pages/login/Login";
-import Toast from "./components/toast/Toast";
 import Register from "./pages/register/Register";
-import PractitionerList from "./pages/practtioner/PractitionerList";
-import PractitionerCreate from "./pages/practtioner/PractitionerCreate";
-import PractitionerUpdate from "./pages/practtioner/PractitionerUpdate";
-
+import { ToastPositions } from "./enum/toast.enum";
 import { jwtInterceptorProvider } from "./axios/jwt.interceptor";
+import PractitionerList from "./pages/practtioner/PractitionerList";
+import PractitionerUpdate from "./pages/practtioner/PractitionerUpdate";
+import PractitionerCreate from "./pages/practtioner/PractitionerCreate";
+import ToastNotification from "./components/toastNotification/ToastNotification";
+
 import {
   LOGIN,
   PRACTITIONER,
@@ -42,7 +43,7 @@ function App() {
 
   return (
     <>
-    <Toast  toastList={toastList} position="top-right"/>
+    <ToastNotification  toastList={toastList} position={ToastPositions.topRight} />
     <BrowserRouter basename="/">
       <Routes>
         <Route path={PRACTITIONER} element={<AuthRoute />}>
