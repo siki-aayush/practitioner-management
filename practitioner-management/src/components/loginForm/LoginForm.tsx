@@ -6,7 +6,9 @@ import { Dispatch, SetStateAction } from "react";
 
 import { setId } from "../../reducers/userSlice";
 import { setIsUserLoggedIn } from "../../reducers";
+import { ToastTypes } from "../../enum/toastTypes.enum";
 import { loginDetail } from "../../interfaces/loginDetail";
+import { generateToast } from "../../utils/generateToast.util";
 import { addUserLoginToLocalStorage } from "../../utils/localstorage.util";
 
 import "./LoginForm.css";
@@ -43,7 +45,8 @@ export const LoginForm = ({
         setMsg(res.data.message);
       }
     } catch (error) {
-      setMsg("Incorrent Username or Password");
+      generateToast(dispatch, "Failed to login", ToastTypes.danger, 3000);
+      setMsg("Incorrect Username or Password");
     }
     setIsLoading(false);
   };

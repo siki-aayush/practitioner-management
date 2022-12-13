@@ -1,9 +1,9 @@
 import axios from "axios";
 import moment from "moment";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 import VirtualList from "rc-virtual-list";
+import { useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Avatar, Button, List, Typography } from "antd";
 
 import Loading from "../../hoc/Loading";
@@ -13,6 +13,7 @@ import { Practitioner } from "../../interfaces/Practitioner";
 import "./PractitionerList.css";
 
 const PractitionerList: React.FC = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState<Practitioner[]>([]);
   const [page, setPage] = useState<number>(1);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -73,7 +74,7 @@ const PractitionerList: React.FC = () => {
     try {
       const res = await axios.delete(`/practitioner/${id}`);
       if (res.status === 200) {
-        window.location.reload();
+        navigate(0)
       }
     } catch (error) {
       console.log(error);
